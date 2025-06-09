@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { words } from "../../constants";
 import Button from "../Button.vue";
+import HeroExperience from "../HeroModels/HeroExperience.vue";
 </script>
 
 <template>
@@ -36,11 +37,13 @@ import Button from "../Button.vue";
         </p>
         <Button class-name="md:w-80 md:h-16 w-60 h-12 md:mt-6 mt-3" id="button" text="See my work!" />
       </header>
+
       <!-- RIGHT: 3D MODEL -->
+      <figure>
+        <div class="hero-3d-layout">
+          <HeroExperience />
+        </div>
+      </figure>
     </div>
   </section>
 </template>
-
-<style scoped>
-
-</style>

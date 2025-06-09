@@ -1,6 +1,7 @@
 {
   "name": "portfolio-website",
   "private": true,
+  "author": "Manan Sharma",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
@@ -13,12 +14,14 @@
     "@tresjs/cientos": "^4.3.1",
     "@tresjs/core": "^4.3.5",
     "@tresjs/post-processing": "^2.4.0",
+    "@vueuse/core": "^13.3.0",
     "gsap": "^3.13.0",
     "tailwindcss": "^4.1.8",
     "three": "^0.177.0",
     "vue": "^3.5.13"
   },
   "devDependencies": {
+    "@types/three": "^0.177.0",
     "@vitejs/plugin-vue": "^5.2.3",
     "@vue/tsconfig": "^0.7.0",
     "typescript": "~5.8.3",

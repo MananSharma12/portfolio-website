@@ -1,7 +1,23 @@
 <script setup lang="ts">
-import { words } from "../../constants";
-import Button from "../Button.vue";
-import HeroExperience from "../HeroModels/HeroExperience.vue";
+import { onMounted } from "vue";
+import { gsap } from "gsap"
+import { words } from "../../constants"
+import Button from "../Button.vue"
+import HeroExperience from "../HeroModels/HeroExperience.vue"
+import AnimatedCounter from "../AnimatedCounter.vue";
+
+onMounted(() => {
+  gsap.fromTo('.hero-text h1', {
+    y:50,
+    opacity: 0,
+  }, {
+    y: 0,
+    opacity: 1,
+    stagger: 0.2,
+    duration: 1,
+    ease: 'power2.inOut'
+  })
+})
 </script>
 
 <template>
@@ -45,5 +61,6 @@ import HeroExperience from "../HeroModels/HeroExperience.vue";
         </div>
       </figure>
     </div>
+    <AnimatedCounter />
   </section>
 </template>

@@ -21,3 +21,9 @@ export const navLinks = [
     { name: "Experience", link: "#experience" },
     { name: "Skills", link: "#skills" },
 ]
+
+export const logoIconsList = [
+    { imgPath: '/images/logos/company-logo-shopify.png' },
+    { imgPath: '/images/logos/company-logo-6.png' },
+    { imgPath: '/images/logos/png-magento-white-logo-icon.png' },
+]

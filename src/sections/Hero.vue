@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { onMounted } from "vue";
 import { gsap } from "gsap"
-import { words } from "../../constants"
-import Button from "../Button.vue"
-import HeroExperience from "../HeroModels/HeroExperience.vue"
-import AnimatedCounter from "../AnimatedCounter.vue";
+import { words } from "../constants"
+import Button from "../components/Button.vue"
+import HeroExperience from "../components/HeroModels/HeroExperience.vue"
+import AnimatedCounter from "../components/AnimatedCounter.vue";
 
 onMounted(() => {
   gsap.fromTo('.hero-text h1', {

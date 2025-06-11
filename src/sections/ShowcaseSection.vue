@@ -13,7 +13,7 @@ const project3Ref = useTemplateRef('project3')
 onMounted(() => {
   const cards = [project1Ref.value, project2Ref.value, project3Ref.value]
 
-  gsap.fromTo(sectionRef, {
+  gsap.fromTo(sectionRef.value, {
     opacity: 0,
   }, {
     opacity: 1,
@@ -36,8 +36,6 @@ onMounted(() => {
     })
   })
 })
-
-
 </script>
 
 <template>

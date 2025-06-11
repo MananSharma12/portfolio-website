@@ -15,3 +15,9 @@ export const counterItems = [
     { value: 4.5, suffix: "+", label: "Years of experience" },
     { value: 4.5, suffix: "+", label: "Years of experience" },
 ]
+
+export const navLinks = [
+    { name: "Work", link: "#work" },
+    { name: "Experience", link: "#experience" },
+    { name: "Skills", link: "#skills" },
+]

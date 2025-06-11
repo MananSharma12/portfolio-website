@@ -1,6 +1,3 @@
-<script setup lang="ts">
-</script>
-
 <template>
   <TresSpotLight
       :position="[1, 1, 1.5]"

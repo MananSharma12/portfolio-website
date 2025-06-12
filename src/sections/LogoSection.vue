@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { logoIconsList } from "../constants";
-import LogoIcon from "./LogoIcon.vue";
+import LogoIcon from "../components/LogoIcon.vue";
 </script>
 
 <template>

@@ -2,7 +2,8 @@
 import NavBar from "./components/NavBar.vue";
 import Hero from "./sections/Hero.vue";
 import ShowcaseSection from "./sections/ShowcaseSection.vue";
-// import LogoSection from "./components/LogoSection.vue";
+// import LogoSection from "./sections/LogoSection.vue";
+import FeatureCards from "./sections/FeatureCards.vue";
 </script>
 
 <template>
@@ -10,5 +11,6 @@ import ShowcaseSection from "./sections/ShowcaseSection.vue";
   <Hero/>
   <ShowcaseSection />
 <!--  <LogoSection />-->
+  <FeatureCards />
 </template>
 

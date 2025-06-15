@@ -5,7 +5,7 @@ const props = defineProps<{
   id?: string
 }>()
 
-const handleClick = (e: PointerEvent) => {
+const handleClick = (e: MouseEvent) => {
   e.preventDefault()
 
   const target = document.getElementById('counter')

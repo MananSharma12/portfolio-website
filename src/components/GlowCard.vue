@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, computed } from "vue";
+import { useMouseInElement, useRafFn } from "@vueuse/core";
 
 interface Card {
   review: string;
@@ -12,31 +13,35 @@ interface Card {
 }
 
 const { card } = defineProps<{
-  card: Card
-}>()
+  card: Card;
+}>();
 
-const cardRef = ref<HTMLDivElement | null>(null)
+const cardRef = ref<HTMLDivElement | null>(null);
 
-const handleMouseMove = (e: MouseEvent) => {
-  const card = cardRef.value
-  if (!card) return
+const { elementX, elementY, isOutside, elementHeight, elementWidth } = useMouseInElement(cardRef);
 
-  const rect = card.getBoundingClientRect()
-  const mouseX = e.clientX - rect.left - rect.width / 2
-  const mouseY = e.clientY - rect.top - rect.height / 2
+const angle = computed(() => {
+  if (isOutside.value) return 0;
 
-  let angle = Math.atan2(mouseY, mouseX) * (180 / Math.PI)
+  const centerX = elementWidth.value / 2;
+  const centerY = elementHeight.value / 2;
+  const dx = elementX.value - centerX;
+  const dy = elementY.value - centerY;
+  const rad = Math.atan2(dy, dx);
+  let deg = rad * (180 / Math.PI);
+  return (deg + 360) % 360;
+});
 
-  angle = (angle + 360) % 360
-
-  card.style.setProperty('--start', (angle + 60).toString())
-}
+useRafFn(() => {
+  if (cardRef.value && !isOutside.value) {
+    cardRef.value.style.setProperty("--start", (angle.value + 60).toString());
+  }
+});
 </script>
 
 <template>
   <div
       ref="cardRef"
-      @mousemove="handleMouseMove"
       class="card card-border timeline-card rounded-xl p-10"
   >
     <div class="glow" />

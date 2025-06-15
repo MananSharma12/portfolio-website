@@ -367,7 +367,8 @@ section {
     width: 2px;
     background: linear-gradient(
             0deg,
-            #dc1313 0%,
+            #000 0%,
+            #dc1313 5%,
             #ff5252 25%,
             #00a5a6 37.51%,
             #02225f 62.83%,
@@ -402,23 +403,40 @@ section {
 .marquee-box {
     display: flex;
     align-items: center;
-    width: 200%;
+    width: fit-content;
     height: 100%;
     position: absolute;
-    overflow: hidden;
-    animation: marquee 60s linear infinite;
+    animation: marquee 30s linear infinite;
+    will-change: transform;
 }
 .marquee-item {
-    float: left;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 @keyframes marquee {
     0% {
-        left: 0;
+        transform: translateX(0);
     }
     100% {
-        left: -100%;
+        transform: translateX(-50%);
     }
 }
+
+@media (max-width: 768px) {
+    .marquee-box {
+        animation-duration: 45s;
+    }
+}
+
+/* Pause animation when user prefers reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .marquee-box {
+        animation-duration: 120s;
+    }
+}
+
 /* marquee end */
 
 .card {

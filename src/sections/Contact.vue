@@ -1,46 +1,45 @@
 <script setup lang="ts">
-import { ref, reactive } from 'vue'
+import { ref, onBeforeUnmount } from 'vue'
 import emailjs from '@emailjs/browser'
 import TitleHeader from '../components/TitleHeader.vue'
 
 const formRef = ref<HTMLFormElement | null>(null)
 const loading = ref<boolean>(false)
 
-const form = reactive<{
-  name: string
-  email: string
-  message: string
-}>({
+const form = ref({
   name: '',
   email: '',
   message: ''
 })
 
-const toast = reactive({
+const toast = ref({
   show: false,
-  type: 'success',
+  type: 'success' as 'success' | 'error',
   message: ''
 })
 
+let toastTimeout: ReturnType<typeof setTimeout> | null = null
+
 const showToast = (type: 'success' | 'error', message: string) => {
-  toast.show = true
-  toast.type = type
-  toast.message = message
+  if (toastTimeout) {
+    clearTimeout(toastTimeout)
+  }
 
-  setTimeout(() => {
-    toast.show = false
+  toast.value.show = true
+  toast.value.type = type
+  toast.value.message = message
+
+  toastTimeout = setTimeout(() => {
+    toast.value.show = false
+    toastTimeout = null
   }, 4000)
-}
-
-const handleChange = (e: Event) => {
-  const target = e.target as HTMLInputElement | HTMLTextAreaElement
-  const { name, value } = target
-  ;(form as any)[name] = value
 }
 
 const handleSubmit = async (e: Event) => {
   e.preventDefault()
-  setLoading(true)
+
+  if (loading.value) return
+  loading.value = true
 
   try {
     if (formRef.value) {
@@ -51,23 +50,26 @@ const handleSubmit = async (e: Event) => {
           import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
       )
 
-      form.name = ''
-      form.email = ''
-      form.message = ''
-
+      form.value = {
+        name: '',
+        email: '',
+        message: ''
+      }
       showToast('success', '✅ Message sent successfully! Thank you for reaching out.')
     }
   } catch (error) {
     console.error('EmailJS Error:', error)
     showToast('error', '❌ Failed to send message. Please try again.')
   } finally {
-    setLoading(false)
+    loading.value = false
   }
 }
 
-const setLoading = (value: boolean) => {
-  loading.value = value
-}
+onBeforeUnmount(() => {
+  if (toastTimeout) {
+    clearTimeout(toastTimeout)
+  }
+})
 </script>
 
 <template>
@@ -92,8 +94,8 @@ const setLoading = (value: boolean) => {
                     id="name"
                     name="name"
                     v-model="form.name"
-                    @input="handleChange"
                     placeholder="What's your good name?"
+                    :disabled="loading"
                     required
                 />
               </div>
@@ -105,8 +107,8 @@ const setLoading = (value: boolean) => {
                     id="email"
                     name="email"
                     v-model="form.email"
-                    @input="handleChange"
                     placeholder="What's your email address?"
+                    :disabled="loading"
                     required
                 />
               </div>
@@ -117,15 +119,15 @@ const setLoading = (value: boolean) => {
                     id="message"
                     name="message"
                     v-model="form.message"
-                    @input="handleChange"
                     placeholder="How can I help you?"
                     rows="5"
+                    :disabled="loading"
                     required
                 />
               </div>
 
-              <button type="submit">
-                <div class="cta-button group">
+              <button type="submit" :disabled="loading">
+                <div class="cta-button group" :class="{ 'opacity-50': loading }">
                   <div class="bg-circle" />
                   <p class="text">
                     {{ loading ? "Sending..." : "Send Message" }}

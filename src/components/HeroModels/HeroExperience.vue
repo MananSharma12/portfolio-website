@@ -11,7 +11,14 @@ const isMobile = useMediaQuery("(max-width: 768px)")
 </script>
 
 <template>
-  <TresCanvas :camera="{ position: [0, 0, 15], fov: 45 }" >
+  <TresCanvas
+      :camera="{
+          position: [0, 0, 15],
+          fov: 45,
+          near: 1,
+          far: 100
+      }"
+  >
     <OrbitControls
         :enable-pan="false"
         :enable-zoom="!isTablet"

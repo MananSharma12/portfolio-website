@@ -7,6 +7,8 @@ import HeroExperience from "../components/HeroModels/HeroExperience.vue"
 import AnimatedCounter from "../components/AnimatedCounter.vue";
 
 onMounted(() => {
+  gsap.set('.hero-text h1', { willChange: 'transform, opacity' })
+
   gsap.fromTo('.hero-text h1', {
     y:50,
     opacity: 0,
@@ -15,7 +17,10 @@ onMounted(() => {
     opacity: 1,
     stagger: 0.2,
     duration: 1,
-    ease: 'power2.inOut'
+    ease: 'power2.inOut',
+    onComplete: () => {
+      gsap.set('.hero-text h1', { willChange: 'auto' })
+    },
   })
 })
 </script>
@@ -23,7 +28,13 @@ onMounted(() => {
 <template>
   <section id="hero" class="relative overflow-hidden">
     <div class="absolute top-0 left-0 z-10">
-      <img src="/images/bg.png" alt="background" />
+      <img
+          src="/images/bg.png"
+          alt="background"
+          loading="eager"
+          decoding="async"
+          style="will-change: transform"
+      />
     </div>
 
     <div class="hero-layout">

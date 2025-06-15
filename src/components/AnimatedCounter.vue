@@ -1,22 +1,34 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed, onBeforeUnmount } from 'vue'
 import { useIntersectionObserver } from '@vueuse/core'
 import { gsap } from 'gsap'
 import { counterItems } from '../constants'
 
-const counterValues = ref(counterItems.map(() => 0))
+const counterRefs = counterItems.map(() => ref(0))
 const counterContainer = ref<HTMLElement>()
 const hasAnimated = ref(false)
 
+const formattedCounters = computed(() =>
+    counterItems.map((item, index) => {
+      const value = counterRefs[index].value
+      return item.value % 1 !== 0
+          ? value.toFixed(1) + item.suffix
+          : Math.round(value) + item.suffix
+    })
+)
+
+let counterTimeline: gsap.core.Timeline | null = null
+
 const { stop } = useIntersectionObserver(counterContainer, ([{isIntersecting}]) => {
-  if (isIntersecting) {
+  if (isIntersecting && !hasAnimated.value) {
+    counterTimeline = gsap.timeline()
+
     counterItems.forEach((item, index) => {
-      gsap.to(counterValues.value, {
-        [index]: item.value,
+      counterTimeline!.to(counterRefs[index], {
+        value: item.value,
         duration: 2,
         ease: "power2.inOut",
-        delay: index * 0.2,
-      })
+      }, index * 0.2)
     })
 
     hasAnimated.value = true
@@ -26,8 +38,12 @@ const { stop } = useIntersectionObserver(counterContainer, ([{isIntersecting}]) 
   threshold: 0.3
 })
 
-const formatCounterValue = (value: number, suffix: string, targetValue: number) =>
-    targetValue % 1 !== 0 ? value.toFixed(1) + suffix : Math.round(value) + suffix
+onBeforeUnmount(() => {
+  if (counterTimeline) {
+    counterTimeline.kill()
+  }
+  stop()
+})
 </script>
 
 <template>
@@ -38,10 +54,8 @@ const formatCounterValue = (value: number, suffix: string, targetValue: number) 
           v-for="(item, i) in counterItems"
           :key="i"
       >
-        <div
-            class="counter-number text-white text-5xl font-bold mb-2"
-        >
-          {{ formatCounterValue(counterValues[i], item.suffix, item.value) }}
+        <div class="counter-number text-white text-5xl font-bold mb-2">
+          {{ formattedCounters[i] }}
         </div>
         <div class="text-white-50 text-lg">{{ item.label }}</div>
       </div>

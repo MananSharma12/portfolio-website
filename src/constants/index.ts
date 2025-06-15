@@ -117,3 +117,15 @@ export const expCards = [
     },
 ];
 
+export const socialImgs = [
+    {
+        name: "x",
+        imgPath: "/images/x.png",
+        url: "x.com/manansharma05"
+    },
+    {
+        name: "linkedin",
+        imgPath: "/images/linkedin.png",
+        url: "www.linkedin.com/in/manansharma1205/"
+    },
+]

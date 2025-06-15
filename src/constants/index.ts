@@ -66,6 +66,7 @@ export const abilities = [
 export const expCards = [
     {
         review: "Manan’s pivot to our Shopify division showed his versatility. He quickly became the go-to dev for custom features and high-performance storefront builds. Clients often praised the UX improvements he brought.",
+        author: "George Hurdle",
         imgPath: "/images/exp3.png",
         logoPath: "/images/logo3.png",
         title: "Mid-Level Frontend Developer",
@@ -78,6 +79,7 @@ export const expCards = [
     },
     {
         review: "As a Junior Developer, Manan owned complex features and elevated Magento storefronts with customized UX. His consistency and performance stood out across multiple projects.",
+        author: "George Hurdle",
         imgPath: "/images/exp2.png",
         logoPath: "/images/logo2.png",
         title: "Junior Frontend Developer",
@@ -90,7 +92,7 @@ export const expCards = [
     },
     {
         review: "Manan showed strong initiative and quick learning ability. He ramped up on Magento development in record time and made meaningful contributions even as a fresh hire.",
-        // imgPath: "/images/ayko1.png",
+        author: "Tom Procter",
         imgPath: "/images/exp2.png",
         logoPath: "/images/logo2.png",
         title: "Graduate Frontend Developer",
@@ -102,6 +104,7 @@ export const expCards = [
     },
     {
         review: "Manan brought our aging UI into the modern era. The Vue.js migration was a huge success, and his creative UX enhancements made TRI3D feel like a completely new product.",
+        author: "Nitish Reddy Parvatam",
         imgPath: "/images/exp1.png",
         logoPath: "/images/logo1.png",
         title: "Frontend Developer",

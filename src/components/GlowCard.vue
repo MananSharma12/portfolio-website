@@ -3,6 +3,7 @@ import { ref } from "vue";
 
 interface Card {
   review: string;
+  author: string;
   imgPath: string;
   logoPath: string;
   title: string;
@@ -39,19 +40,11 @@ const handleMouseMove = (e: MouseEvent) => {
       class="card card-border timeline-card rounded-xl p-10"
   >
     <div class="glow" />
-    <div class="flex items-center gap-1 mb-5">
-      <img
-          src="/images/star.png"
-          v-for="i in 5"
-          :key="i"
-          alt="star"
-          class="size-5"
-      />
-    </div>
     <div class="mb-5">
       <p class="text-white-50 text-lg">
         {{ card.review }}
       </p>
+      <p class="text-white-50 italic mt-2 text-right">- {{ card.author }}</p>
     </div>
     <slot></slot>
   </div>

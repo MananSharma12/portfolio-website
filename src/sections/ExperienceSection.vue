@@ -57,7 +57,7 @@ onMounted(async () => {
 
 <template>
   <section id="experience" class="w-full md:mt-40 mt-20">
-    <div class="w-full h-full md:pd-20 px-5">
+    <div class="w-full h-full md:px-20 px-5">
       <TitleHeader title="Professional Work Experience" sub="💼 My career overview" />
 
       <div class="mt-32 relative">

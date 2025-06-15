@@ -5,7 +5,6 @@ import { navLinks } from "../constants"
 const scrolled = ref<boolean>(false)
 
 const handleScroll = () => {
-  const isScrolled = window.scrollY > 10
   scrolled.value = true
 }
 

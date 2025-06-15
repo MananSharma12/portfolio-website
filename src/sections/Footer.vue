@@ -23,7 +23,7 @@ import { socialImgs } from "../constants";
 
       <div class="flex flex-col justify-center">
         <p class="text-center md:text-end">
-          © {{ new Date().getFullYear() }} Manan Sharma. All rights reserved.
+          © {{ new Date().getFullYear() }} Manan Sharma
         </p>
       </div>
     </div>

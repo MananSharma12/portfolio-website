@@ -15,12 +15,6 @@ import LogoIcon from "../components/LogoIcon.vue";
             :key="index"
             :imgPath="imgPath"
         />
-
-        <LogoIcon
-            v-for="({ imgPath }, index) in logoIconsList"
-            :key="`duplicate-${index}`"
-            :imgPath="imgPath"
-        />
       </div>
     </div>
   </div>

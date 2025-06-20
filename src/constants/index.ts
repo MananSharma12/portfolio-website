@@ -121,11 +121,16 @@ export const socialImgs = [
     {
         name: "x",
         imgPath: "/images/x.png",
-        url: "x.com/manansharma05"
+        url: "https://x.com/manansharma05"
     },
     {
         name: "linkedin",
         imgPath: "/images/linkedin.png",
-        url: "www.linkedin.com/in/manansharma1205/"
+        url: "https://www.linkedin.com/in/manansharma1205/"
+    },
+    {
+        name: "github",
+        imgPath: "/images/github.png",
+        url: "https://github.com/MananSharma12"
     },
 ]

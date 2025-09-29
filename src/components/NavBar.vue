@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue";
-import { navLinks } from "../constants"
+import { navLinks, RESUME } from "../constants"
 
 const scrolled = ref<boolean>(false)
 
@@ -35,6 +35,12 @@ onUnmounted(() => {
       </nav>
 
       <a href="#contact" class="contact-btn group">
+        <div class="mt-2 mr-4 underline">
+          <a :href="RESUME" target="_blank">
+            <span>Résumé</span>
+          </a>
+        </div>
+
         <div class="inner">
           <span>Contact Me</span>
         </div>

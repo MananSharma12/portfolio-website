@@ -134,3 +134,10 @@ export const socialImgs = [
         url: "https://github.com/MananSharma12"
     },
 ]
+
+export const RESUME = "https://docs.google.com/document/d/1cHsbElCyWHHdGTzwTqUOtFLxwu0iPQF-TAo0ZaIWBuQ"
+
+export const projectLinks = {
+  heroForge: "https://heroforgenft.vercel.app/",
+  fab3d: "https://fabric.tri3d.in/",
+}

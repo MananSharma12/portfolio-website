@@ -2,16 +2,16 @@
 import { useTemplateRef, onMounted } from "vue";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { projectLinks } from "../constants";
 
 gsap.registerPlugin(ScrollTrigger)
 
 const sectionRef = useTemplateRef('section')
 const project1Ref = useTemplateRef('project1')
 const project2Ref = useTemplateRef('project2')
-const project3Ref = useTemplateRef('project3')
 
 onMounted(() => {
-  const cards = [project1Ref.value, project2Ref.value, project3Ref.value]
+  const cards = [project1Ref.value, project2Ref.value]
 
   gsap.fromTo(sectionRef.value, {
     opacity: 0,
@@ -45,28 +45,26 @@ onMounted(() => {
       <!-- LEFT -->
         <div class="first-project-wrapper" ref="project1">
           <div class="image-wrapper">
-            <img src="/images/project1.png" alt="TRI3D" />
+            <img src="/images/project_heroforge.png" alt="HeroForge" />
           </div>
           <div class="text-content">
-            <h2>Get visualization for your fabric on photorealistic models in just 2 clicks with Fab3D!</h2>
-            <p class="text-white-50 md:text-xl">Fab3D, An innovative web application that seamlessly transforms fabric samples into stunning photorealistic visualizations.</p>
+            <a :href="projectLinks.heroForge" target="_blank">
+              <h2>HeroForge NFT</h2>
+            </a>
+            <p class="text-white-50 md:text-xl">An on-chain NFT card game where you can mint an ERC‑721 token with procedurally generated attributes and rarities. Players can mint heroes on Ethereum Sepolia testnet and view their collection in the frontend.</p>
           </div>
         </div>
 
-      <!-- RIGHT -->
-        <div class="project-list-wrapper overflow-hidden">
-          <div class="project" ref="project2">
-            <div class="image-wrapper bg-[#ffefdb]">
-              <img src="/images/project1.png" alt="TRI3D" />
-              <h2>Fab3D</h2>
-            </div>
+        <!-- RIGHT -->
+        <div class="first-project-wrapper xl:w-[35%]" ref="project2">
+          <div class="image-wrapper">
+            <img src="/images/project1.png" alt="TRI3D" />
           </div>
-
-          <div class="project" ref="project3">
-            <div class="image-wrapper bg-[#ffe7db]">
-              <img src="/images/project1.png" alt="TRI3D" />
+          <div class="text-content">
+            <a :href="projectLinks.fab3d" target="_blank">
               <h2>Fab3D</h2>
-            </div>
+            </a>
+            <p class="text-white-50 md:text-xl">Fab3D, An innovative web application that seamlessly transforms fabric samples into stunning photorealistic visualizations.</p>
           </div>
         </div>
       </div>

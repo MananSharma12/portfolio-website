@@ -60,7 +60,7 @@ onMounted(() => {
           <h1>that Deliver Results</h1>
         </div>
         <p class="text-white-50 md:text-xl relative z-10 pointer-events-none">
-          Hi, I'm Manan, a Frontend Developer based in 🇮🇳.
+          Hi, I'm Manan, a Fullstack Blockchain Developer based in 🇮🇳.
         </p>
         <Button class-name="md:w-80 md:h-16 w-60 h-12 md:mt-6 mt-3" id="button" text="See my work!" />
       </header>

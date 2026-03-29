@@ -49,7 +49,9 @@ useRafFn(() => {
       <p class="text-white-50 text-lg">
         {{ card.review }}
       </p>
-      <p class="text-white-50 italic mt-2 text-right">- {{ card.author }}</p>
+      <p class="text-white-50 italic mt-2 text-right">
+        <span v-if="card.author">- {{ card.author }}</span>
+      </p>
     </div>
     <slot></slot>
   </div>

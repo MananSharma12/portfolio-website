@@ -10,7 +10,7 @@ export const words = [
 ];
 
 export const counterItems = [
-    { value: 4.5, suffix: "+", label: "Years of experience" },
+    { value: 5, suffix: "+", label: "Years of experience" },
     { value: 30, suffix: "+", label: "Production Websites Deployed" },
     { value: 8, suffix: "+", label: "E-commerce Platforms Revamped" },
     { value: 10, suffix: "+", label: "Technologies & Frameworks Used" },
@@ -64,6 +64,19 @@ export const abilities = [
 ]
 
 export const expCards = [
+    {
+        review: "Awarded a Certificate of Appreciation for consistent, high-quality delivery and dependable execution across critical ad-tech and monetisation workflows.",
+        author: "",
+        imgPath: "/images/exp4.png",
+        logoPath: "/images/logo4.png",
+        title: "Senior Frontend Developer",
+        date: "November 2025 – Present",
+        responsibilities: [
+            "Stabilised video monetisation by resolving CMP and Google IMA SDK consent propagation issues, preventing invalid ad requests and ensuring GDPR-compliant ad delivery.",
+            "Optimised ad loading strategy using conditional execution, reducing unnecessary third-party scripts while maintaining revenue-critical ad behaviour.",
+            "Worked across high-traffic publishing platforms, improving reliability of video and display ad units under real-world production constraints.",
+        ],
+    },
     {
         review: "Manan’s pivot to our Shopify division showed his versatility. He quickly became the go-to dev for custom features and high-performance storefront builds. Clients often praised the UX improvements he brought.",
         author: "George Hurdle",
@@ -135,7 +148,7 @@ export const socialImgs = [
     },
 ]
 
-export const RESUME = "https://docs.google.com/document/d/1cHsbElCyWHHdGTzwTqUOtFLxwu0iPQF-TAo0ZaIWBuQ"
+export const RESUME = "https://docs.google.com/document/d/1IDe6lCRGATGkbNueS1xOSqYJUk3WOJRn6U6uvaTJZC8/"
 
 export const projectLinks = {
   heroForge: "https://heroforgenft.vercel.app/",

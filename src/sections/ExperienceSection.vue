@@ -26,17 +26,14 @@ onMounted(async () => {
   })
 
   gsap.to('.timeline', {
+    scaleY: 0,
     transformOrigin: 'bottom bottom',
-    ease: 'power1.inOut',
+    ease: 'none',
     scrollTrigger: {
-      trigger: '.timeline',
+      trigger: '.timeline-wrapper',
       start: 'top center',
       end: '70% center',
-      onUpdate: (self) => {
-        gsap.to('.timeline', {
-          scaleY: 1 - self.progress,
-        })
-      }
+      scrub: true,
     }
   })
 
@@ -60,8 +57,13 @@ onMounted(async () => {
     <div class="w-full h-full md:px-20 px-5">
       <TitleHeader title="Professional Work Experience" sub="💼 My career overview" />
 
-      <div class="mt-32 relative">
-        <div class="relative z-50 xl:space-y-32 space-y-10">
+      <div class="mt-32 relative z-50">
+        <div class="timeline-wrapper">
+          <div class="timeline" />
+          <div class="gradient-line w-1 h-full" />
+        </div>
+
+        <div class="relative xl:space-y-32 space-y-10">
           <div
               v-for="card in expCards"
               :key="card.title"
@@ -76,11 +78,6 @@ onMounted(async () => {
             </div>
             <div class="xl:w-4/6">
               <div class="flex items-start">
-                <div class="timeline-wrapper">
-                  <div class="timeline" />
-                  <div class="gradient-line w-1 h-full" />
-                </div>
-
                 <div class="expText flex xl:gap-20 md:gap-10 gap-5 relative z-20">
                   <div class="timeline-logo">
                     <img :src="card.logoPath" alt="logo" />

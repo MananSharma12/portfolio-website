@@ -1,22 +1,10 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from "vue";
-import { navLinks, RESUME } from "../constants"
+import { computed } from "vue";
+import { useWindowScroll } from "@vueuse/core";
+import { navLinks, RESUME } from "../constants";
 
-const scrolled = ref<boolean>(false)
-
-const handleScroll = () => {
-  scrolled.value = true
-}
-
-onMounted(() => {
-  window.addEventListener("scroll", handleScroll)
-})
-
-onUnmounted(() => {
-  if (handleScroll) {
-    window.removeEventListener('scroll', handleScroll)
-  }
-})
+const { y } = useWindowScroll();
+const scrolled = computed(() => y.value > 10);
 </script>
 
 <template>

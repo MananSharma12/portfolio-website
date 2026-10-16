@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { ref, computed, type Ref } from 'vue'
-import { useRenderLoop } from '@tresjs/core'
+import { ref, computed, watch, type Ref } from 'vue'
+import { useLoop, useTresContext } from '@tresjs/core'
+import { useElementVisibility } from '@vueuse/core'
 import type { Points, BufferGeometry } from 'three'
 
 interface Particle {
@@ -41,9 +42,21 @@ const positions = computed<Float32Array>(() => {
   return positionsArray
 })
 
-const { onLoop } = useRenderLoop()
+const { renderer } = useTresContext()
+const { onBeforeRender, pause, resume, pauseRender, resumeRender } = useLoop()
+const isVisible = useElementVisibility(() => renderer.value?.domElement)
 
-onLoop(() => {
+watch(isVisible, (visible) => {
+  if (visible) {
+    resume()
+    resumeRender()
+  } else {
+    pause()
+    pauseRender()
+  }
+})
+
+onBeforeRender(() => {
   if (!meshRef.value) return
 
   const positionsArray = meshRef.value.geometry.attributes.position.array as Float32Array

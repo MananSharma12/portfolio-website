@@ -4,7 +4,7 @@ import { gsap } from "gsap"
 import { words } from "../constants"
 import Button from "../components/Button.vue"
 import HeroExperience from "../components/HeroModels/HeroExperience.vue"
-import AnimatedCounter from "../components/AnimatedCounter.vue";
+// import AnimatedCounter from "../components/AnimatedCounter.vue";
 
 onMounted(() => {
   gsap.set('.hero-text h1', { willChange: 'transform, opacity' })
@@ -72,6 +72,6 @@ onMounted(() => {
         </div>
       </figure>
     </div>
-    <AnimatedCounter />
+    <!-- <AnimatedCounter /> -->
   </section>
 </template>
